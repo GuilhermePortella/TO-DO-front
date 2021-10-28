@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from 'src/app/models/todo';
+import { Usuario } from 'src/app/models/Usuario';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -8,10 +8,13 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./read-all.component.css']
 })
 export class ReadAllComponent implements OnInit {
-  
-  list: Todo[] = [];
 
   constructor(private service: TodoService) { }
+
+  listaUsuario: Usuario[] = [];
+  nomeUsuario: string;
+  cpfUsuario: string;
+  rgUsuario: string;
 
   ngOnInit(): void {
     this.findAll();
@@ -19,9 +22,17 @@ export class ReadAllComponent implements OnInit {
 
   findAll(): void {
     this.service.findAll().subscribe((resposta) => {
-      this.list = resposta;
+      this.listaUsuario = resposta;
     })
+  }
 
+  delete(id: any): void {
+    this.service.delete(id).subscribe((resp)=>{
+      if(resp === null){
+        this.service.message('Deletado com sucesso!');
+        this.listaUsuario= this.listaUsuario.filter(Usuario => Usuario.idUsuario !== id);
+      }
+    })
   }
 
 }

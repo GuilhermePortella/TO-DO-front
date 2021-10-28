@@ -1,22 +1,20 @@
 <div class="container">
-    <button class="novo-todo mat-elevation-z8" mat-stroked-button color="primary">NOVO TO-DO</button>
+    <button routerLink="create" class="novo-todo mat-elevation-z8" mat-stroked-button color="primary">Novo Registro</button>
 
-    <div class="content" *ngFor="let item of list">
+    <div class="content" *ngFor="let Usuario of listaUsuario">
         <mat-card class="mat-elevation-z8">
-            <p>Data para finalizar: {{item.dataParaFinalizar}} </p>
+            <p>ID: {{Usuario.idUsuario}} </p>
             <mat-card-header>
-                <mat-card-title>{{item.titulo }}</mat-card-title>
-                <mat-card-subtitle>{{item.descricao}}</mat-card-subtitle>
+                <mat-card-title>NOME:  {{Usuario.nomeUsuario }}</mat-card-title>
+                <mat-card-subtitle>CPF:   {{Usuario.cpfUsuario}}</mat-card-subtitle>
+                <mat-card-subtitle>RG:  {{Usuario.rgUsuario}}</mat-card-subtitle>
             </mat-card-header>
 
             <div class="actions">
-                <button mat-mini-fab color="primary">
-                    <mat-icon>done</mat-icon>
-                </button>
                 <button mat-mini-fab color="accent">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-mini-fab color="warn">
+                <button (click)="delete(Usuario.idUsuario)" mat-mini-fab color="warn">
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>

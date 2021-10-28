@@ -1,0 +1,31 @@
+<form >
+    <h1>Criar novo registro</h1>
+
+
+    <div class="forms">
+
+        <mat-form-field class="form">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Ex. Joao">
+          </mat-form-field>
+    
+          <mat-form-field class="form">
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="Ex. 12344451-11">
+          </mat-form-field>
+    
+          <mat-form-field class="form">
+            <mat-label>RG</mat-label>
+            <input matInput placeholder="Ex. 12345-1">
+          </mat-form-field>
+
+    </div>
+
+    <div class="bottons">
+        <button mat-stroked-button color="primary">Criar</button>
+        <button (click)="cancel()" mat-stroked-button color="warn">Cancelar</button>
+
+
+    </div>
+
+</form>
